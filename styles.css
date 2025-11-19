@@ -1,0 +1,172 @@
+/* ================================
+   FESTCHAIN — Clean Modern Styles
+   Offline Demo UI
+   ================================ */
+
+/* Reset / base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f4f6f9;
+  padding: 20px;
+  margin: 0;
+  max-width: 900px;
+  margin: auto;
+  color: #333;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+header small {
+  font-size: 13px;
+  color: #7f8c8d;
+}
+
+/* Panels */
+.panel {
+  background: #ffffff;
+  border: 1px solid #dfe6e9;
+  padding: 16px;
+  border-radius: 10px;
+  margin-top: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+}
+
+.panel h3 {
+  margin-top: 0;
+  color: #2d3436;
+}
+
+/* Labels + Inputs */
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #34495e;
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #dcdde1;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input:focus {
+  border: 1px solid #0984e3;
+}
+
+/* Buttons */
+button {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: #0984e3;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+  background: #0873c6;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  background: #b2bec3;
+  cursor: not-allowed;
+}
+
+/* Event Cards */
+.card {
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 10px 0;
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+}
+
+.card strong {
+  color: #2d3436;
+  font-size: 15px;
+}
+
+.card small {
+  color: #636e72;
+}
+
+/* Status indicators */
+.status {
+  margin-top: 8px;
+  font-weight: 600;
+  color: #00b894;
+}
+
+#errorStatus,
+#adminStatus {
+  margin-top: 10px;
+}
+
+/* Global status banner */
+#globalStatus {
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: none;
+}
+
+/* Admin-only button styling */
+.admin-btn {
+  background: #6c5ce7;
+}
+
+.admin-btn:hover {
+  background: #5646d7;
+}
+
+/* Demo Controls */
+.demo-controls input {
+  width: 100px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+  }
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

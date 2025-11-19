@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FestChain Demo - offline</title>
+    <script src = "https://cdn.jsdelivr.net/npm/web@31.10.0/dist/web3.min.js"></script>
+    <link rel = "stylesheet" href = "styles.css">
+    <style>
+        body { font-family : Arial, Helvetica, sans-serif; padding : 18px; max-width : 900px; margin : auto;}
+        header { display : flex; align-items : center; gap : 12px;}
+        h1 { margin : 0; font-size : 20px;}
+        .panel1 { border : 1px solid #ddd; padding : 12px; border-radius : 8px; margin-top : 12px; background : #fafafa ;}
+        label { display : block; margin-top : 8px; font-weight : 600;}
+        input, button { padding : 8px; margin-top : 6px;}
+        .card { border : 1px solid #eee; padding : 8px; margin : 8px 0; border-radius : 6px;}
+        #eventsList .card { display : flex; justify-content : space-between; gap : 8px; align-items : center; }
+        small { color : #666;}
+        .status { margin-top : 8px; color : green; font-weight : 600;}
+    </style>
+</head>
+<body>
+    <header>
+        <h1> FestChain - Offline Demo</h1>
+        <small>Gnanache RPC -> http://127.0.0.1:8545</small>
+    </header>
+    <div class = "panel" id = "adminpanel">
+        <h3>Admin (create event)</h3>
+        <label>Title <input id = "evTitle" placeholder = "Rock Night"></label>
+        <label>Date <input id = "evDate" placeholder = "Nov 25, 6pm"></label>
+        <label>Capacity <input id = "evCap" type = "number" placeholder = "50"></label>
+        <button id = "createBtn">Create Event (admin)</button>
+        <div class = "status" id = "adminStatus"></div>
+        <p><small>Use console: <code>setActiveAccount(0)</code> then click Create</small></p>
+    </div>
+
+    <div class = "panel">
+        <h3>Events</h3>
+        <div id = "eventsList">Loading events...</div>
+    </div>
+
+    <div class = "panel">
+        <h3>Demo COntrols</h3>
+        <p>
+            Active account index : <input id = "acctIndex" type = "number" value = "0" style = "width : 80px">
+            <button id = "setAcctBtn">Set Active Account</button>
+        </p>
+        <p>
+            <small>Tip: use account 0 as admin (deployer), account 1 as attendee.</small>
+        </p>
+        <div id = "demoStatus" class = "status"></div>
+    </div>
+
+    <script src = "app.js"></script>
+    <script>
+        //wire UI to functions in app.js
+        document.getElementById('createBtn').addEventListener('click',async () => {
+            const t = document.getElementById('evTitle').value || 'Demo Event';
+            const d = document.getElementById('evDate').value || 'TBD';
+            const c = parseInt(document.getElementById('evCap').value) || 50;
+            document.getElementById('adminStatus').innerText = 'Creating event ....';
+            await createEvent(t, d, c);
+            document.getelementById('adminStatus').innerText = 'created (check Ganache)';
+        });
+
+        document.getElementById('setAcctBtn').addEventListener('click', () => {
+            const isx = parseInt(document.getElementById('acctIndex').value || '0');
+            setActiveAccount(idx);
+            document.getElementById('demoStatus').innerText = 'Active Account set to index' + idx;
+        });
+
+        setInterval(() => {
+            if (typeof loadEvents === 'function') loadEvents();
+        }, 2000);
+    </script>
+</body>
+</html>
